@@ -8,8 +8,6 @@ import './App.css';
 import Header from './Header/Header.js'
 import FeatureSection from './FeatureSection/FeatureSecton'
 import Summary from './Summary/Summary'
-import Feature from './Feature/Feature'
-import features from './store'
 // This object will allow us to
 // easily convert numbers into US dollar values
 class App extends Component {
@@ -43,13 +41,6 @@ class App extends Component {
     
   };
 
-
-featuresList = () => Object.keys(features).map((feature, idx) => {
-    const featureHash = feature + '-' + idx;
- return  <Feature featureHash={featureHash} key={idx} updateFeature={this.updateFeature} selected={this.state.selected} name={feature} options={features[feature]}/>
- })
-
-
   
   render() {
 
@@ -58,7 +49,7 @@ featuresList = () => Object.keys(features).map((feature, idx) => {
       <div className="App">
         <Header />
         <main>
-        <FeatureSection features={this.featuresList()} />
+        <FeatureSection selected={this.state.selected} updateFeature={this.updateFeature}/>
         <Summary selected={this.state.selected}/>    
         </main> 
       </div>
